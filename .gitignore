@@ -1,0 +1,3 @@
+*.db
+yamlforge
+!cmd/yamlforge/

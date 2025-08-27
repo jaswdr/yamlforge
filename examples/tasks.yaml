@@ -1,0 +1,96 @@
+app:
+  name: "Task Manager"
+  version: "1.0.0"
+  description: "A simple task management application"
+
+database:
+  type: sqlite
+  path: "./tasks.db"
+
+server:
+  port: 8081
+  host: "localhost"
+  cors:
+    enabled: true
+    origins: ["http://localhost:3000"]
+  auth:
+    type: jwt
+    secret: "your-secret-key-here"
+    expires: "24h"
+    users:
+      - username: admin
+        password: admin123
+        email: admin@example.com
+        role: admin
+        active: true
+
+      - username: writer
+        password: writer123
+        email: writer@example.com
+        role: writer
+        active: true
+        permissions:
+          Task:
+            read: true
+            write: false
+
+      - username: viewer
+        password: viewer123
+        email: viewer@example.com
+        role: viewer
+        active: true
+        permissions:
+          Task:
+            read: true
+            write: false
+
+ui:
+  theme: "light"
+  title: "My Tasks"
+  layout: "sidebar"
+
+models:
+  Task:
+    fields:
+      id:
+        type: id
+        primary: true
+      title:
+        type: text
+        required: true
+        min: 3
+        max: 100
+      description:
+        type: text
+        max: 500
+      status:
+        type: enum
+        options: ["todo", "in_progress", "done"]
+        default: "todo"
+        required: true
+      priority:
+        type: number
+        min: 1
+        max: 5
+        default: 3
+      due_date:
+        type: datetime
+      created_at:
+        type: datetime
+        auto_now_add: true
+      updated_at:
+        type: datetime
+        auto_now: true
+
+    ui:
+      list:
+        columns: ["title", "status", "priority", "due_date"]
+        sortable: ["title", "status", "priority", "due_date", "created_at"]
+        searchable: ["title", "description"]
+      form:
+        fields:
+          - title
+          - description
+          - status
+          - priority
+          - due_date

@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./yamlforge*)",
+      "Bash(cat*)",
+      "Bash(chmod*)",
+      "Bash(curl*)",
+      "Bash(go build*)",
+      "Bash(go get*)",
+      "Bash(make*)",
+      "Bash(mkdir*)",
+      "Bash(node*)",
+      "Bash(touch*)",
+      "Bash(true)",
+      "Bash(make:*)",
+      "Bash(go run:*)",
+      "Bash(go test:*)",
+      "Bash(go tool cover:*)",
+      "Bash(grep:*)",
+      "Bash(go mod init:*)",
+      "Bash(go get:*)"
+    ],
+    "deny": []
+  },
+  "outputStyle": "Explanatory"
+}

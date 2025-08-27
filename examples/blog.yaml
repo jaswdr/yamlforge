@@ -1,0 +1,65 @@
+app:
+  name: "Simple Blog"
+  version: "1.0.0"
+  description: "A simple blog application"
+
+database:
+  type: sqlite
+  path: "./blog.db"
+
+server:
+  port: 8080
+  host: "0.0.0.0"
+  cors:
+    enabled: true
+    origins: ["*"]
+  auth:
+    type: jwt
+    secret: "your-secret-key-here"
+    expires: "24h"
+    users:
+      - username: admin
+        password: admin123
+        email: admin@example.com
+        role: admin
+        active: true
+
+ui:
+  theme: "light"
+  title: "My Blog"
+  layout: "sidebar"
+
+models:
+  Post:
+    fields:
+      id:
+        type: id
+        primary: true
+      title:
+        type: text
+        required: true
+        min: 5
+        max: 200
+      content:
+        type: markdown
+        required: true
+      published:
+        type: boolean
+        default: false
+      created_at:
+        type: datetime
+        auto_now_add: true
+      updated_at:
+        type: datetime
+        auto_now: true
+
+    ui:
+      list:
+        columns: ["title", "published", "created_at"]
+        sortable: ["title", "created_at"]
+        searchable: ["title", "content"]
+      form:
+        fields:
+          - title
+          - content
+          - published
