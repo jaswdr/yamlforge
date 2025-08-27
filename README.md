@@ -2,6 +2,8 @@
 
 yamlforge is a single-binary tool that generates and serves complete web applications from YAML configuration files. Define your data models, validation rules, and UI preferences in YAML, and yamlforge instantly creates a working application with both backend API and frontend interface.
 
+![](./docs/index.png)
+
 ## Features
 
 - **Single YAML file**: Create functional web applications without writing code just a single YAML file
