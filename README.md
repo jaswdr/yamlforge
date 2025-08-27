@@ -6,6 +6,8 @@ yamlforge is a single-binary tool that generates and serves complete web applica
 
 ![](./docs/index.png)
 
+![](./docs/form.png)
+
 ## Features
 
 - **Single YAML file**: Create functional web applications without writing code just a single YAML file
